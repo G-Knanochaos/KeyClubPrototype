@@ -1,11 +1,9 @@
 import cssutils
 from bs4 import BeautifulSoup
-from bs4.element import NavigableString
-from flask import render_template
-import os
-from main import app
+from os import listdir
+from os.path import isfile
 
-def compress_css(input_file, output_file, html_file):
+def compress_css(input_file, html_file):
     with open(input_file, 'r') as infile:
         css_text = infile.read()
 
@@ -66,13 +64,11 @@ def compress_css(input_file, output_file, html_file):
         print(media_rule.cssText)
         compressed_stylesheet.add(media_rule)
     
-    for i in range(100):
-        print("filler")
     soup = None
     with open(html_file,"r") as html:
         soup = BeautifulSoup(html,'html.parser')
 
-    print([s.attrs for s in soup if type(s) != NavigableString])
+    print(kicked_selectors)
     for selector in kicked_selectors:
         '''
         with app.app_context():
@@ -81,33 +77,36 @@ def compress_css(input_file, output_file, html_file):
         '''
         
         kicked_elements = soup.find_all(class_ = lambda c: c and selector in c)
-
-
-
+         
         for element in kicked_elements:
-            element["class"][element["class"].index(selector)] = (kicked_selectors[selector])[1:] #find og_selector of current kicked_selector
+            try:
+                element["class"][element["class"].index(selector)] = (kicked_selectors[selector])[1:] #find og_selector of current kicked_selector
+            except:
+                print(element)
+                quit()
 
     with open(html_file,"w") as html:
         html.write(str(soup))
     print("Compress HTML saved to " +html_file)
 
-
-
-
     # Write the compressed CSS to the output file
-    with open(output_file, 'w') as outfile:
+    with open(input_file, 'w') as outfile:
         outfile.write(str(compressed_stylesheet.cssText))
 
 #/Users/oceanhawk/Documents/Python/KeyClub Flask Setup/website/static/css/events.css
 if __name__ == "__main__":
 
-    name = "/"+input("CSS file?")
+    css_path = input("Path to css file? (from current directory, if using default flask file structure input nothing)")
+    css_path = css_path if css_path != "" else "/website/static"
     FILE_PATH = __file__[:(-(__file__[::-1].index("/"))-1)]
     print(FILE_PATH)
 
-    input_file = FILE_PATH + "/website/static/css" + name
-    html_path =  FILE_PATH + "/website/templates" + name[:-4]  +".html"
-    output_file =  input_file
+    names = [file[:-4] for file in listdir(FILE_PATH+css_path) if file[-4:] == ".css"]
+    css_files = [FILE_PATH + "/website/static/css/" + name +".css" for name in names]
+    html_files =  [FILE_PATH + "/website/templates/" + name  +".html" for name in names]
 
-    compress_css(input_file, output_file,html_path)
-    print(f"Compressed CSS saved to {output_file}")
+    print(css_files,html_files)
+
+    for i in range(len(names)):
+        compress_css(css_files[i],html_files[i])
+        print(f"Compressed CSS saved to {css_files[i]}")
