@@ -75,38 +75,48 @@ def compress_css(input_file, html_file):
             real_html = render_template(html_file)
         print(real_html)
         '''
-        
-        kicked_elements = soup.find_all(class_ = lambda c: c and selector in c)
+        def search(c):
+            if c != None:
+                c=c.split(" ")
+            return c and selector in c
+        kicked_elements = soup.find_all(class_ = lambda c: search(c))
          
         for element in kicked_elements:
             try:
                 element["class"][element["class"].index(selector)] = (kicked_selectors[selector])[1:] #find og_selector of current kicked_selector
             except:
-                print(element)
+                print("FAILED:", element)
+                print("SELECTOR:",selector)
+                print("CLASS",element["class"])
                 quit()
 
-    with open(html_file,"w") as html:
-        html.write(str(soup))
-    print("Compress HTML saved to " +html_file)
-
-    # Write the compressed CSS to the output file
-    with open(input_file, 'w') as outfile:
-        outfile.write(str(compressed_stylesheet.cssText))
+    return (soup,str(compressed_stylesheet.cssText))
 
 #/Users/oceanhawk/Documents/Python/KeyClub Flask Setup/website/static/css/events.css
 if __name__ == "__main__":
-
+    
     css_path = input("Path to css file? (from current directory, if using default flask file structure input nothing)")
     css_path = css_path if css_path != "" else "/website/static"
     FILE_PATH = __file__[:(-(__file__[::-1].index("/"))-1)]
     print(FILE_PATH)
 
-    names = [file[:-4] for file in listdir(FILE_PATH+css_path) if file[-4:] == ".css"]
+    names = [file[:-4] for file in listdir(FILE_PATH+css_path) if file == "past-events.css"]
     css_files = [FILE_PATH + "/website/static/css/" + name +".css" for name in names]
     html_files =  [FILE_PATH + "/website/templates/" + name  +".html" for name in names]
 
     print(css_files,html_files)
 
+    files = []
     for i in range(len(names)):
-        compress_css(css_files[i],html_files[i])
-        print(f"Compressed CSS saved to {css_files[i]}")
+        files.append(compress_css(css_files[i],html_files[i]))
+        
+    if input("Write?") == "y":
+        for i in range(len(names)):
+            with open(css_files[i], 'w') as outfile:
+                outfile.write(files[i][1])
+                print("Compress CSS saved to " +css_files[i])
+            with open(html_files[i],"w") as html:
+                html.write(str(files[i][0]))
+                print("Compress HTML saved to " +html_files[i])
+
+
