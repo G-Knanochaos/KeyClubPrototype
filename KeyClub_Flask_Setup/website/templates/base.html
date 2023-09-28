@@ -164,7 +164,9 @@ BLOCKS:
     <link rel="stylesheet" href="{{url_for('static',filename="css/style.css")}}" />
     <link rel="stylesheet" href="{{url_for('static',filename="css/standard.css")}}" />
     {% block stylesheets %}{% endblock %}
-    <script src="{{url_for('static',filename = 'javascript/toggle.js')}}"></script>
+    <script src="{{url_for('static',filename = 'javascript/toggle.js')}}" ></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> <!--Jquery from CDN-->
+
 
   </head>
   <body>
