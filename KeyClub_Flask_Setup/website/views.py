@@ -1,5 +1,7 @@
-from flask import Blueprint, redirect, url_for, render_template, request, jsonify, flash
-
+from flask import Blueprint, redirect, url_for, render_template, request
+import requests #to communicate with events appscript proxy
+import json
+from datetime import date
 
 views = Blueprint('views', __name__)
 
@@ -8,12 +10,24 @@ views = Blueprint('views', __name__)
 def base():
     return render_template("base.html")
 
-
-
+def fetch_events(s=1,n=4): #group multiplier, group size
+    file = open(url_for("static", filename = "json/events.json"), "r+")
+    f = json.load(file)
+    if f.get("date",None) == date.today():
+        file.close()
+        return f
+    payload = {"s":str(s),"n":str(n)}
+    r = json.loads(requests.get("https://script.google.com/macros/s/AKfycbz6yU0XXLwv40d0rfE4QdH3x9pRnFQq1zUTIt7OvcgaaHYs-uXhebU4DOBb0kSISbLa_w/exec", params = payload).json())
+    r["date"] = date.today()
+    file.write(r)
+    file.close()
+    return r
+    
 
 @views.route('')
 def default():
-    return render_template("index.html")
+    events = fetch_events()
+    return events #render_template("index.html", **events)
 
 @views.route('landing')
 def landing():
