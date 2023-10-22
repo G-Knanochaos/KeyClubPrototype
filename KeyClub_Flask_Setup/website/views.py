@@ -13,13 +13,14 @@ def base():
 
 def fetch_events(s=1,n=4): #group multiplier, group size
     url = url_for("static", filename = "json/events.json")
-    file = open(os.path.join(os.path.dirname(__file__),url), "r+")
+    file = open(os.path.join(os.path.dirname(__file__),url[1:]), "r+")
     f = json.load(file)
     if f.get("date",None) == date.today():
         file.close()
         return f
     payload = {"s":str(s),"n":str(n)}
-    r = json.loads(requests.get("https://script.google.com/macros/s/AKfycbz6yU0XXLwv40d0rfE4QdH3x9pRnFQq1zUTIt7OvcgaaHYs-uXhebU4DOBb0kSISbLa_w/exec", params = payload).json())
+    r = json.loads(requests.get("https://script.google.com/macros/s/AKfycbyLcJe2rVvdbOofKLTjTVaTy3Tprh6VW6lLwsJ_YUIaDL2hgk8nGaLLlzSJahIMRGVEwQ/exec", 
+                                params = payload).text)
     r["date"] = date.today()
     file.write(r)
     file.close()
@@ -29,7 +30,7 @@ def fetch_events(s=1,n=4): #group multiplier, group size
 @views.route('')
 def default():
     events = fetch_events()
-    return render_template("index.html",**events) #render_template("index.html", **events)
+    return render_template("index.html", **events)
 
 @views.route('landing')
 def landing():
