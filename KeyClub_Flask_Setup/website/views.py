@@ -13,18 +13,17 @@ def base():
 
 def fetch_events(s=1,n=4): #group multiplier, group size
     url = url_for("static", filename = "json/events.json")
-    file = open(os.path.join(os.path.dirname(__file__),url[1:]), "r+")
-    f = json.load(file)
+    with open(os.path.join(os.path.dirname(__file__),url[1:]), "r") as file:
+        f = json.load(file)
     if f.get("date",None) == date.today():
-        file.close()
         return f
     payload = {"s":str(s),"n":str(n)}
-    r = json.loads(requests.get("https://script.google.com/macros/s/AKfycbyLcJe2rVvdbOofKLTjTVaTy3Tprh6VW6lLwsJ_YUIaDL2hgk8nGaLLlzSJahIMRGVEwQ/exec", 
-                                params = payload).text)
-    r["date"] = date.today()
-    file.write(r)
-    file.close()
-    return r
+    r = requests.get("https://script.google.com/macros/s/AKfycbzcb4J4p0mmW8gGQBVphHQFC5-iu4_33aRXQl3bOXO2FcHniZm5xV9uTW3uFzDRm1-m-g/exec", params = payload).text
+    j = json.loads(r)
+    j["date"] = date.today().strftime('%m/%d/%Y')
+    with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:
+        file.write(json.dumps(j))
+    return j
     
 
 @views.route('')
