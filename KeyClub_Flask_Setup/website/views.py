@@ -2,6 +2,7 @@ from flask import Blueprint, redirect, url_for, render_template, request
 import requests #to communicate with events appscript proxy
 import json
 from datetime import date
+import os
 
 views = Blueprint('views', __name__)
 
@@ -11,7 +12,8 @@ def base():
     return render_template("base.html")
 
 def fetch_events(s=1,n=4): #group multiplier, group size
-    file = open(url_for("static", filename = "json/events.json"), "r+")
+    url = url_for("static", filename = "json/events.json")
+    file = open(os.path.join(os.path.dirname(__file__),url), "r+")
     f = json.load(file)
     if f.get("date",None) == date.today():
         file.close()
@@ -27,7 +29,7 @@ def fetch_events(s=1,n=4): #group multiplier, group size
 @views.route('')
 def default():
     events = fetch_events()
-    return events #render_template("index.html", **events)
+    return render_template("index.html",**events) #render_template("index.html", **events)
 
 @views.route('landing')
 def landing():
