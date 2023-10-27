@@ -18,7 +18,7 @@ def fetch_events(s=1,n=4): #group multiplier, group size
     if f.get("date",None) == date.today():
         return f
     payload = {"s":str(s),"n":str(n)}
-    r = requests.get("https://script.google.com/macros/s/AKfycbzcb4J4p0mmW8gGQBVphHQFC5-iu4_33aRXQl3bOXO2FcHniZm5xV9uTW3uFzDRm1-m-g/exec", params = payload).text
+    r = requests.get("https://script.google.com/macros/s/AKfycbzQFrs5AnxX-JjJuBOt_B41QoHLyc2iUmREIcJzIql6nzWW7VOxiTMNJchRK6Ptltjwlg/exec", params = payload).text
     j = json.loads(r)
     j["date"] = date.today().strftime('%m/%d/%Y')
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:

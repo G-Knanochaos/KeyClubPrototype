@@ -121,7 +121,7 @@
 }
 .event-card-text {
   color: rgb(254, 210, 86);
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 900;
   margin-bottom: var(--dl-space-space-halfunit);
@@ -272,7 +272,7 @@
 }
 @media(max-width: 1600px) {
   .event-card-text {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
   .event-card-text1 {
     font-size: 1.5rem;
@@ -280,7 +280,7 @@
 }
 @media(max-width: 1200px) {
   .event-card-text {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .event-card-text1 {
     font-size: 1.25rem;
@@ -376,7 +376,7 @@
     margin-right: 0px;
   }
   .event-card-text {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-top: 0px;
     margin-bottom: 0px;
   }
@@ -805,6 +805,7 @@
   background-color: rgb(254, 210, 86);
 }
 .home-events {
+  display: grid;
   gap: var(--dl-space-space-unit);
   width: 95%;
   height: 100%;
