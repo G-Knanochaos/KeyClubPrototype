@@ -20,9 +20,9 @@ def fetch_events(s=1,n=4): #group multiplier, group size
 
 def fetch_images(s=True,n=4): #stratify, number of images
     payload = {"s":str(s),"n":str(n)}
-    r = requests.get("https://script.google.com/macros/s/AKfycbyp2mpURmCKaoHwDXvtzk-6_Opod9h4ZFyETzj87DYv5To6cvbedWlo8Azko3VS33Ir/exec", params = payload).text
+    r = requests.get("https://script.google.com/macros/s/AKfycbz8DFStA8H6c-VMfsryOgBksfUNSbLD7qr7_vPlq33Zp9QWrgKeXSOFQhUyQwuvnBlk/exec", params = payload).text
     j = json.loads(r)
-    return j[0]
+    return j["links"]
 
 views = Blueprint('views', __name__)
 
