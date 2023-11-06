@@ -1,15 +1,8 @@
-from flask import Blueprint, redirect, url_for, render_template, request
+from flask import Blueprint, redirect, url_for, render_template
 import requests #to communicate with events appscript proxy
 import json
 from datetime import date
 import os
-
-views = Blueprint('views', __name__)
-
-#FOR DEBUGGING PURPOSES
-@views.route('base')
-def base():
-    return render_template("base.html")
 
 def fetch_events(s=1,n=4): #group multiplier, group size
     url = url_for("static", filename = "json/events.json")
@@ -23,13 +16,26 @@ def fetch_events(s=1,n=4): #group multiplier, group size
     j["date"] = date.today().strftime('%m/%d/%Y')
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:
         file.write(json.dumps(j))
-    return j
-    
+    return j["events"]
+
+def fetch_images(s=True,n=4): #stratify, number of images
+    payload = {"s":str(s),"n":str(n)}
+    r = requests.get("https://script.google.com/macros/s/AKfycbz8DFStA8H6c-VMfsryOgBksfUNSbLD7qr7_vPlq33Zp9QWrgKeXSOFQhUyQwuvnBlk/exec", params = payload).text
+    j = json.loads(r)
+    return j["links"]
+
+views = Blueprint('views', __name__)
+
+#FOR DEBUGGING PURPOSES
+@views.route('base')
+def base():
+    return render_template("base.html")    
 
 @views.route('')
 def default():
     events = fetch_events()
-    return render_template("index.html", **events)
+    images = fetch_images()
+    return render_template("index.html", images=images, events=events)
 
 @views.route('landing')
 def landing():
