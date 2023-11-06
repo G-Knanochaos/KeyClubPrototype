@@ -34,8 +34,7 @@ def base():
 @views.route('')
 def default():
     events = fetch_events()
-    images = fetch_images()
-    return render_template("index.html", images=images, events=events)
+    return render_template("index.html", events=events)
 
 @views.route('landing')
 def landing():
