@@ -18,7 +18,7 @@ def fetch(type="events",n=4,s=1):
         if len(f[type]) == n:
             return f[type]
         add = True
-    n = len(f[type])-n
+    n = len(f.get(type))-n
     payload = {"s":str(s),"n":str(n)}
 
 
@@ -44,7 +44,7 @@ def base():
 @views.route('')
 def default():
     events = fetch("events")
-    images = fetch("images")
+    images = fetch("images",8)
     print(images)
     return render_template("index.html", images=images, events=events)
 
