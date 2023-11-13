@@ -12,27 +12,30 @@ def fetch(type="events",n=4,s=1):
     print(f"Fetching {type}!")
     url = url_for("static", filename = f"json/{type}.json")
     add = False
+    today = date.today().strftime("%m%d%y")
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "r") as file:
-        f = json.load(file)
-    if f.get("date",None) == date.today():
+        try: 
+            f = json.load(file)
+        except:
+            f = {"date":None,type:[]}
+    if f.get("date",None) == today:
+        print(len(f[type]),n)
         if len(f[type]) == n:
+            print("Requested files already stored.")
             return f[type]
         add = True
-    n = len(f[type])-n
+    n = len(f.get(type))-n
     payload = {"s":str(s),"n":str(n)}
 
 
     r = requests.get(requests_map[type], params = {}).text #wtf man
 
-    print(r)
     j = json.loads(r)
-    j["date"] = date.today().strftime('%m/%d/%Y')
-    print(j[type])
+    j["date"] = today
     result = (f[type] if add else [])+j[type]
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:
         file.write(json.dumps(j))
     return result
-
 
 views = Blueprint('views', __name__)
 
@@ -47,6 +50,7 @@ def default():
     images = fetch("images")
     print(images)
     return render_template("index.html", images=images, events=events)
+
 
 @views.route('landing')
 def landing():

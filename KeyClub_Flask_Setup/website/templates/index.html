@@ -4,6 +4,44 @@
 <link rel="stylesheet" href="{{url_for('static',filename="css/index.css")}}"/>
 {% endblock %}
 
+{% block scripts %}
+<script>  
+  window.onload = function(){setInterval(function(){countDown("{{events[0].date}}")},1000)}
+  // Update the count down every 1 second
+  function countDown(date) {
+
+    var countDownDate = new Date(Date.parse(date)).getTime();
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+  
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+  
+    // Time calculations for days, hours, minutes and seconds
+    var time = {
+      days : Math.floor(distance / (1000 * 60 * 60 * 24)),
+      hours : Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minutes : Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds : Math.floor((distance % (1000 * 60)) / 1000)
+    }
+  
+    // Display the result in the element with id="demo"
+    document.getElementById("home-count-down").childNodes.forEach(element => {
+      console.log(element.id)
+      element.innerHTML = time[element.id] + " " + element.id 
+    });
+  
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("home-count-down").innerHTML = "NOW!!!";
+    }
+  }
+</script>
+  
+{% endblock %}
+
 {% block content %}
 <div class="home-hero"></div>
 <div class="home-home-content">
@@ -61,13 +99,13 @@
       </div>
     </div>
     <div class="home-countdown-container">
-      <div class="home-count-down">
-        <h1 class="home-text04">0 days,&nbsp;</h1>
-        <h1 class="home-text05">0 hours,&nbsp;</h1>
-        <h1 class="home-text06">0 minutes,&nbsp;</h1>
-        <h1 class="home-text07">0 seconds</h1>
+      <div class="home-count-down" id = "home-count-down">
+        <h1 class="home-text04" id="days">0 days</h1>
+        <h1 class="home-text04" id="hours">0 hours</h1>
+        <h1 class="home-text04" id="minutes">0 minutes</h1>
+        <h1 class="home-text04" id="seconds">0 seconds</h1>
       </div>
-      <h6 class="home-heading">Countdown to next DCM on xx/xx/xx</h6>
+      <h6 class="home-heading">Countdown to {{events[0].event}} on {{events[0].date}}</h6>
     </div>
   </div>
   <div class="home-events-container Row">
