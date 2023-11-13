@@ -47,7 +47,7 @@ def base():
 @views.route('')
 def default():
     events = fetch("events")
-    images = fetch("images")
+    images = fetch("images",8)
     print(images)
     return render_template("index.html", images=images, events=events)
 
