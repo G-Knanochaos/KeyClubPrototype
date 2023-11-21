@@ -11,10 +11,11 @@
     <br />
   </h1>
   <div class="resources-faq-questions Row">
-    <div class="opener-container Row opener-root-class-name">
+    {% for f in faqs %}
+    <div class="opener-container Row">
       <div class="opener-container1">
         <h1 class="opener-text SubHeader">
-          <span>What happens at DCMs?</span>
+          <span>{{f["Question"]}}</span>
         </h1>
         <img
           alt="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
@@ -23,59 +24,10 @@
         />
       </div>
       <span class="opener-text1 small-text">
-        <span>gfkasdhgfbalksdfca</span>
+        <span>{{f["Answer"]}}</span>
       </span>
     </div>
-    <div class="opener-container Row">
-      <div class="opener-container1">
-        <h1 class="opener-text SubHeader"><span>What is MRP?</span></h1>
-        <img
-          alt="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          src="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          class="opener-image"
-        />
-      </div>
-      <span class="opener-text1 small-text"><span>Text</span></span>
-    </div>
-    <div class="opener-container Row">
-      <div class="opener-container1">
-        <h1 class="opener-text SubHeader">
-          <span>What is AAR, PTP, etc?</span>
-        </h1>
-        <img
-          alt="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          src="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          class="opener-image"
-        />
-      </div>
-      <span class="opener-text1 small-text"><span>Text</span></span>
-    </div>
-    <div class="opener-container Row opener-root-class-name1">
-      <div class="opener-container1">
-        <h1 class="opener-text SubHeader">
-          <span>Is KeyClub PVSA eligible?</span>
-        </h1>
-        <img
-          alt="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          src="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          class="opener-image"
-        />
-      </div>
-      <span class="opener-text1 small-text"><span>Text</span></span>
-    </div>
-    <div class="opener-container Row opener-root-class-name2">
-      <div class="opener-container1">
-        <h1 class="opener-text SubHeader">
-          <span>What is the Division 30 South Mascot?</span>
-        </h1>
-        <img
-          alt="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          src="https://enterprisefilmsllc.com/wp-content/uploads/2018/07/white-down-arrow-png-2.png"
-          class="opener-image"
-        />
-      </div>
-      <span class="opener-text1 small-text"><span>Text</span></span>
-    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

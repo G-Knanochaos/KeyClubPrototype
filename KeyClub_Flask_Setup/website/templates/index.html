@@ -28,7 +28,6 @@
   
     // Display the result in the element with id="demo"
     document.getElementById("home-count-down").childNodes.forEach(element => {
-      console.log(element.id)
       element.innerHTML = time[element.id] + " " + element.id 
     });
   
@@ -355,20 +354,14 @@
               <div class="gallery-card2-container">
                 <div class="gallery-card2-container1">
                   <h2 class="gallery-card2-text">
-                    <span>Project Title</span>
+                    <span>{{images[4].event}}</span>
                   </h2>
-                  <span class="gallery-card2-text1">
-                    <span>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit
-                    </span>
-                  </span>
-                  <span class="gallery-card2-text2">SHOW MORE</span>
+                  <a href="{{url_for("views.past_events")}}" class="gallery-card2-text2">SHOW MORE</a>
                 </div>
               </div>
               <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
+                src={{images[4].link}}
+                alt="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
                 class=" gallery-card2-image"
               />
             </div>
@@ -380,20 +373,14 @@
               <div class="gallery-card2-container">
                 <div class="gallery-card2-container1">
                   <h2 class="gallery-card2-text">
-                    <span>Project Title</span>
+                    <span>{{images[5].event}}</span>
                   </h2>
-                  <span class="gallery-card2-text1">
-                    <span>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elit
-                    </span>
-                  </span>
-                  <span class="gallery-card2-text2">SHOW MORE</span>
+                  <a href="{{url_for("views.past_events")}}" class="gallery-card2-text2">SHOW MORE</a>
                 </div>
               </div>
               <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fGZvb2R8ZW58MHx8fHwxNjI2NDQ5NjUy&amp;ixlib=rb-1.2.1&amp;h=1000"
+                src={{images[5].link}}
+                alt="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fGZvb2R8ZW58MHx8fHwxNjI2NDQ5NjUy&amp;ixlib=rb-1.2.1&amp;h=1000"
                 class="gallery-card2-image "
               />
             </div>
@@ -406,20 +393,14 @@
             <div class="gallery-card2-container">
               <div class="gallery-card2-container1">
                 <h2 class="gallery-card2-text">
-                  <span>Project Title</span>
+                  <span>{{images[6].event}}</span>
                 </h2>
-                <span class="gallery-card2-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit
-                  </span>
-                </span>
-                <span class="gallery-card2-text2">SHOW MORE</span>
+                <a href="{{url_for("views.past_events")}}" class="gallery-card2-text2">SHOW MORE</a>
               </div>
             </div>
             <img
-              alt="image"
-              src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIzfHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
+              src={{images[6].link}}
+              alt="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIzfHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
               class="gallery-card2-image "
             />
           </div>
@@ -432,20 +413,14 @@
           <div class="gallery-card2-container">
             <div class="gallery-card2-container1">
               <h2 class="gallery-card2-text">
-                <span>Project Title</span>
+                <span>{{images[7].event}}</span>
               </h2>
-              <span class="gallery-card2-text1">
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit
-                </span>
-              </span>
-              <span class="gallery-card2-text2">SHOW MORE</span>
+              <a href="{{url_for("views.past_events")}}" class="gallery-card2-text2">SHOW MORE</a>
             </div>
           </div>
           <img
-            alt="image"
-            src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE5fHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
+            src={{images[7].link}}
+            alt="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE5fHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
             class="gallery-card2-image "
           />
         </div>

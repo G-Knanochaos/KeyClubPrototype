@@ -3,15 +3,16 @@ import requests #to communicate with events appscript proxy
 import json
 from datetime import date
 import os
+from time import time
 
 requests_map = {
     "events":"https://script.google.com/macros/s/AKfycbzQFrs5AnxX-JjJuBOt_B41QoHLyc2iUmREIcJzIql6nzWW7VOxiTMNJchRK6Ptltjwlg/exec",
-    "images":"https://script.google.com/macros/s/AKfycbzdLT7ZYBBf50gHiWll_qUatXHToagXeSqRsra7U1gitvEkDpgsUVXm-dr311D6BYzZ/exec"
+    "images":"https://script.google.com/macros/s/AKfycbzdLT7ZYBBf50gHiWll_qUatXHToagXeSqRsra7U1gitvEkDpgsUVXm-dr311D6BYzZ/exec",
+    "FAQs":"https://script.google.com/macros/s/AKfycbwOy_dZXH1prFKOj_ZU-mgU9Vodot-KYK5FSpA0uPX8RyKlSNN6Lls8GZshkNGEoWoi6Q/exec",
 }
-def fetch(type="events",n=4,s=1):
+def fetch(type="events",n=4,s=1,override=False):
     print(f"Fetching {type}!")
     url = url_for("static", filename = f"json/{type}.json")
-    add = False
     today = date.today().strftime("%m%d%y")
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "r") as file:
         try: 
@@ -19,23 +20,20 @@ def fetch(type="events",n=4,s=1):
         except:
             f = {"date":None,type:[]}
     if f.get("date",None) == today:
-        print(len(f[type]),n)
-        if len(f[type]) == n:
-            print("Requested files already stored.")
+        if override or len(f[type]) == n:
             return f[type]
-        add = True
-    n = len(f.get(type))-n
+    
+    n = n-len(f.get(type))
     payload = {"s":str(s),"n":str(n)}
 
-
-    r = requests.get(requests_map[type], params = {}).text #wtf man
+    r = requests.get(requests_map[type],params = payload).text
 
     j = json.loads(r)
     j["date"] = today
-    result = (f[type] if add else [])+j[type]
+    j[type] = (f[type] if not override else [])+j[type]
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:
         file.write(json.dumps(j))
-    return result
+    return j[type]
 
 views = Blueprint('views', __name__)
 
@@ -46,9 +44,11 @@ def base():
 
 @views.route('')
 def default():
+    start = time()
     events = fetch("events")
+    print(f"Fetched events in {time()-start}")
     images = fetch("images",8)
-    print(images)
+    print(f"Fetched images in {time()-start}")
     return render_template("index.html", images=images, events=events)
 
 
@@ -82,7 +82,9 @@ def past_events():
 
 @views.route("resources-faq.html")
 def faq():
-    return render_template("resources-faq.html")
+    faqs = fetch("FAQs",override=True)
+    print(faqs)
+    return render_template("resources-faq.html", faqs=faqs)
 
 @views.route("resources-misc.html")
 def misc():

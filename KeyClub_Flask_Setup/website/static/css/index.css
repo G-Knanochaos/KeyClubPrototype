@@ -1059,7 +1059,6 @@
     min-height: 0vh;
     padding-left: var(--dl-space-space-unit);
     padding-right: var(--dl-space-space-unit);
-    background-image: linear-gradient(0deg, rgba(13, 12, 12, 0.5) 13.00%,rgba(252, 249, 226, 0.2) 93.00%),url('https://video-lax3-2.xx.fbcdn.net/v/t1.6435-9/75392684_1581734221964874_1647877547297341440_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=8631f5&_nc_ohc=BiKa5w-OXh0AX_p58Ne&_nc_ht=video-lax3-2.xx&oh=00_AfAVXqJ0-F_x_fL1UA4xL51ESgFiz75Ctnl_nBuijZ20mw&oe=64D5984E');
   }
   .home-about-container1 {
     padding-left: var(--dl-space-space-unit);
@@ -1126,6 +1125,7 @@
     height: 237px;
     min-height: 0vh;
     justify-content: center;
+
   }
   .home-stats-container {
     width: 80%;
