@@ -15,13 +15,17 @@ def fetch(type="events",n=4,s=1,override=False):#if override is set to True, cha
     print(f"Fetching {type}!")
     url = url_for("static", filename = f"json/{type}.json")
     today = date.today().strftime("%m%d%y")
-    with open(os.path.join(os.path.dirname(__file__),url[1:]), "a+") as file:
+    with open(os.path.join(os.path.dirname(__file__),url[1:]), "r") as file:
         try: 
             f = json.load(file)
-        except:
+        except Exception as e:
+            print("File JSON parsing error, emptying file and refetching data")
+            print(e)
             f = {"date":None,type:[]}
+    print(f.get("date"),today)
     if f.get("date",None) == today:
-        if override or len(f[type]) == n:
+        print(len(f[type]),n)
+        if override or len(f[type]) >= n:
             return f[type]
     
     n = n-len(f.get(type))
@@ -29,6 +33,7 @@ def fetch(type="events",n=4,s=1,override=False):#if override is set to True, cha
 
     r = requests.get(requests_map[type],params = payload).text
 
+    print(r)
     j = json.loads(r)
     j["date"] = today
     j[type] = (f[type] if not override else [])+j[type]
