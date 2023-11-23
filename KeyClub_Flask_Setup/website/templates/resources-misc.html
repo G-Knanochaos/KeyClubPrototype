@@ -10,58 +10,20 @@
     <span>Miscellaneous</span>
     <br />
   </h1>
+  {% for item in misc %}
   <div class="resources-misc-container1 Row">
-    <h1 class="resources-misc-text03 header">Calendars</h1>
+    <h1 class="resources-misc-text03 header">{{item["Header"]}}</h1>
     <ul class="resources-misc-ul list">
+      {% for link in item["Links"] %}
       <li class="resources-misc-li list-item">
         <span class="resources-misc-text04 small-text">
-          <span>DCM Calendar</span>
+          <a href="{{link['url']}}">{{link["text"]}}</a>
           <br />
         </span>
       </li>
-      <li class="resources-misc-li1 list-item">
-        <span class="resources-misc-text07 small-text">
-          <span>DCM Calendar</span>
-          <br />
-        </span>
-      </li>
+      {% endfor %}
     </ul>
   </div>
-  <div class="resources-misc-container2 Row">
-    <h1 class="resources-misc-text10 header">
-      <span>Tools For Officers</span>
-      <br />
-    </h1>
-    <span class="resources-misc-text13 small-text">
-      gfkasdhgfbalksdfca
-    </span>
-  </div>
-  <div class="resources-misc-container3 Row">
-    <h1 class="resources-misc-text14 header">
-      <span>Club Submissions</span>
-      <br />
-    </h1>
-    <span class="resources-misc-text17 small-text">
-      gfkasdhgfbalksdfca
-    </span>
-  </div>
-  <div class="resources-misc-container4 Row">
-    <h1 class="resources-misc-text18 header">
-      <span>Goals Progress</span>
-      <br />
-    </h1>
-    <span class="resources-misc-text21 small-text">
-      gfkasdhgfbalksdfca
-    </span>
-  </div>
-  <div class="resources-misc-container5 Row">
-    <h1 class="resources-misc-text22 header">
-      <span>Forms</span>
-      <br />
-    </h1>
-    <span class="resources-misc-text25 small-text">
-      gfkasdhgfbalksdfca
-    </span>
-  </div>
+  {% endfor %}
 </div>
 {% endblock %}
