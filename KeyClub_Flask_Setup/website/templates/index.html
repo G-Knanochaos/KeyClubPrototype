@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="{{url_for('static',filename="css/index.css")}}"/>
 {% endblock %}
 
+
 {% block scripts %}
 <script>  
   window.onload = function(){setInterval(function(){countDown("{{events[0].date}}")},1000)}
@@ -112,7 +113,7 @@
       <h1 class="home-text08 header">Upcoming Division Events</h1>
     </a>
     <div class="home-events">
-      {% for event, image in events[:2]|zip(images[:2]) %}
+      {% for event, image in events[:4]|zip(images[:4]) %}
       <div
         class="event-card-blog-post-card"
       >
@@ -139,33 +140,6 @@
       </div>
       {% endfor %}
     </div>
-    <div class="home-events1">
-      {% for event, image in events[2:]|zip(images[2:]) %}
-      <div
-        class="event-card-blog-post-card"
-      >
-        <div class="event-card-container">
-          <img
-            alt="https://images.unsplash.com/photo-1465925508512-1e7052bb62e6?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIzfHxjaXR5JTIwY2FifGVufDB8fHx8MTYyNjQ1MDMwNA&amp;ixlib=rb-1.2.1&amp;h=1200"
-            src="{{image.link}}"
-            class="event-card-image"
-            loading = "lazy"
-          />
-          <div class="event-card-container1">
-            <h1 class="event-card-text header">
-              <span>{{event.event}}</span>
-            </h1>
-            <div class="event-card-container2">
-              <span class="event-card-text2"><span>{{event.event_type}}</span></span>
-              <span class="event-card-text3"><span>{{event.date}}</span></span>
-              <button onclick="location.href = '{{event.RSVP}}';" class="event-card-button button">
-                <span class="event-card-text4"><span>RSVP</span></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
   </div>
   <div class="home-dlt-container Row">
     <a href="{{url_for("views.about_leadership")}}" class="home-navlink2">
@@ -174,63 +148,23 @@
         <span class="home-text11">DLT</span>
       </h1>
     </a>
-    <div class="home-container01">
+    <div class="cabinet-div">
+      {% for member in cabinet %}
       <div
         class="cabinet-card-blog-post-card cabinet-card-root-class-name16"
       >
-        <div class="cabinet-card-container" style="background-image: url('static/public/DLT/Lieutenant Governer_Austin Alves.png'); background-position: top">
+        <div class="cabinet-card-container" style="background-image:url({{member.Image}})">
           <div class="cabinet-card-container1">
             <span class="cabinet-card-text">
-              <span>Liutenant Governer</span>
+              <span>{{member.Position}}</span>
             </span>
             <h1 class="cabinet-card-text1">
-              <span>Austin Alves</span>
+              <span>{{member.Name}}</span>
             </h1>
           </div>
         </div>
       </div>
-      <div
-        class="cabinet-card-blog-post-card cabinet-card-root-class-name17"
-      >
-        <div class="cabinet-card-container" style="background-image: url('static/public/DLT/Executive Assistant_Crystal Tran.png'); background-position: center">
-          <div class="cabinet-card-container1">
-            <span class="cabinet-card-text">
-              <span>Executive Assistant</span>
-            </span>
-            <h1 class="cabinet-card-text1"><span>Crystal tran</span></h1>
-          </div>
-        </div>
-      </div>
-      <div
-        class="cabinet-card-blog-post-card cabinet-card-root-class-name18"
-      >
-        <div class="cabinet-card-container" style="background-image: url('static/public/DLT/Executive Assistant_Devin Le.png'); background-position: top">
-          <div class="cabinet-card-container1">
-            <span class="cabinet-card-text">
-              <span>Executive Assistant</span>
-            </span>
-            <h1 class="cabinet-card-text1">
-              <span>Devin Le</span>
-            </h1>
-            <span class="cabinet-card-text2"><span></span></span>
-          </div>
-        </div>
-      </div>
-      <div
-        class="cabinet-card-blog-post-card cabinet-card-root-class-name19"
-      >
-        <div class="cabinet-card-container" style="background-image: url('static/public/DLT/Executive Assistant_Aditi Patel.png'); background-position: top">
-          <div class="cabinet-card-container1">
-            <span class="cabinet-card-text">
-              <span>Executive Assistant</span>
-            </span>
-            <h1 class="cabinet-card-text1">
-              <span>Aditi Patel</span>
-            </h1>
-            <span class="cabinet-card-text2"><span></span></span>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
     <span class="home-text12 small-text">
       The Division Leadership Team (DLT) orchestrates efforts amongst
