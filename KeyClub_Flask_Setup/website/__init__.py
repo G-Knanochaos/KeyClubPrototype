@@ -1,5 +1,6 @@
 #initiation file for website, ran on import
 from flask import Flask
+import website.fetching
 
 app = Flask(__name__)
 
