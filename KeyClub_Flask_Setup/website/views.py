@@ -10,8 +10,8 @@ def base():
 
 @views.route('')
 def default():
-    events = fetch("events")
-    images = fetch("images",payload={"n":8})
+    events = fetch("events",payload={"n":4})
+    images = fetch("images",payload={"n":8},interval=30)
     cabinet = fetch("Sheets",payload={
         "name":"Cabinet Display",
         "n":4
@@ -39,24 +39,28 @@ def about_keyclub():
 def about_leadership():
     cabinet = fetch("Sheets",payload={
         "name":"Cabinet Display",
-        "all":True
-    },json_name="cabinet_info",override=True)
+    },json_name="cabinet_info",override=True,interval=1)
     return render_template("about-leadership.html", cabinet=cabinet)
 
 @views.route("events")
 def events():
-    return render_template("events.html")
+    events = fetch("events",payload={"n":4})
+    images = fetch("images",payload={"n":8},interval=30)
+    return render_template("events.html", events=events, images=images)
 
 @views.route("past-events")
 def past_events():
-    return render_template("past-events.html")
+    images = fetch("past_photos",payload={
+        "all":True
+    },interval=1)
+    return render_template("past-events.html", images=images,interval=30)
 
 @views.route("resources-faq.html")
 def faq():
     faqs = fetch("Sheets",payload={
         "name":"FAQ",
         "all":True
-    },json_name="FAQ",override=True)
+    },json_name="FAQ",override=True,interval=2)
     return render_template("resources-faq.html", faqs=faqs)
 
 @views.route("resources-misc.html")

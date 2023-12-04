@@ -15,19 +15,14 @@
         <div class="bee-memories-container">
           <div class="bee-memories-container1">
             <h2 class="bee-memories-text">
-              <span>Project Title</span>
+              <span>{{images[0].event}}</span>
             </h2>
-            <span class="bee-memories-text1">
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </span>
-            </span>
-            <span class="bee-memories-text2">SHOW MORE</span>
+            <a href="{{images[0].album_link}}" class="bee-memories-text2">SHOW MORE</a>
           </div>
         </div>
         <img
-          alt="image"
-          src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
+          src="{{images[0].link}}"
+          alt="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
           class="bee-memories-image"
         />
       </div>
@@ -37,20 +32,16 @@
         <div class="bee-memories-container">
           <div class="bee-memories-container1">
             <h2 class="bee-memories-text">
-              <span>Project Title</span>
+              <span>{{images[1].event}}</span>
             </h2>
-            <span class="bee-memories-text1">
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </span>
-            </span>
-            <span class="bee-memories-text2">SHOW MORE</span>
+
+            <a href="{{images[1].album_link}}" class="bee-memories-text2">SHOW MORE</a>
           </div>
         </div>
         <img
-          alt="image"
-          src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fGZvb2R8ZW58MHx8fHwxNjI2NDQ5NjUy&amp;ixlib=rb-1.2.1&amp;h=1000"
-          class="bee-memories-image"
+        src="{{images[1].link}}"
+        alt="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
+        class="bee-memories-image"
         />
       </div>
     </div>
@@ -59,37 +50,29 @@
     >
       <div class="bee-memories-container">
         <div class="bee-memories-container1">
-          <h2 class="bee-memories-text"><span>Project Title</span></h2>
-          <span class="bee-memories-text1">
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            </span>
-          </span>
-          <span class="bee-memories-text2">SHOW MORE</span>
+          <h2 class="bee-memories-text"><span>{{images[2].event}}</span></h2>
+
+          <a href="{{images[2].album_link}}" class="bee-memories-text2">SHOW MORE</a>
         </div>
       </div>
       <img
-        alt="image"
-        src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIzfHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
-        class="bee-memories-image"
+      src="{{images[2].link}}"
+      alt="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
+      class="bee-memories-image"
       />
     </div>
   </div>
   <div class="bee-memories-gallery-card bee-memories-root-class-name1">
     <div class="bee-memories-container">
       <div class="bee-memories-container1">
-        <h2 class="bee-memories-text"><span>Project Title</span></h2>
-        <span class="bee-memories-text1">
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit
-          </span>
-        </span>
-        <span class="bee-memories-text2">SHOW MORE</span>
+        <h2 class="bee-memories-text"><span>{{images[3].event}}</span></h2>
+
+        <a href={{images[3].album_link}} class="bee-memories-text2">SHOW MORE</a>
       </div>
     </div>
     <img
-      alt="image"
-      src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE5fHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
+      src="{{images[3].link}}"
+      alt="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
       class="bee-memories-image"
     />
   </div>
@@ -101,136 +84,34 @@
   </h1>
   <div class="past-events-container3">
     <div class="past-events-events">
-      <div class="past-events-container4">
+        {% for image in images[::-1] %}
         <div
-          class="event-card-blog-post-card event-card-root-class-name31"
+          class="event-card-blog-post-card"
         >
           <div class="event-card-container">
             <img
-              alt="image"
-              src="https://play.teleporthq.io/static/svg/default-img.svg"
+              alt="https://images.unsplash.com/photo-1465925508512-1e7052bb62e6?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIzfHxjaXR5JTIwY2FifGVufDB8fHx8MTYyNjQ1MDMwNA&amp;ixlib=rb-1.2.1&amp;h=1200"
+              src="{{image.link}}"
               class="event-card-image"
+              loading = "lazy"
             />
             <div class="event-card-container1">
               <h1 class="event-card-text header">
-                <span>July DCM</span>
+                <span>{{image.event}}</span>
               </h1>
-              <h2 class="event-card-text1 header">
-                <span>Division</span>
-              </h2>
               <div class="event-card-container2">
-                <span class="event-card-text2">
-                  <span>SOCIAL</span>
-                </span>
-                <span class="event-card-text3">
-                  <span>July 22nd</span>
-                </span>
-                <button class="event-card-button button">
-                  <span class="event-card-text4">
-                    <span>Photos</span>
-                  </span>
+                <span class="event-card-text3"><span>{{image.date}}</span></span>
+                <button onclick="location.href = '{{image.album_link}}';" class="event-card-button button">
+                  <span class="event-card-text4"><span>PHOTOS</span></span>
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="event-card-blog-post-card event-card-root-class-name32"
-        >
-          <div class="event-card-container">
-            <img
-              alt="image"
-              src="https://play.teleporthq.io/static/svg/default-img.svg"
-              class="event-card-image"
-            />
-            <div class="event-card-container1">
-              <h1 class="event-card-text header">
-                <span>July DCM</span>
-              </h1>
-              <h2 class="event-card-text1 header">
-                <span>Region</span>
-              </h2>
-              <div class="event-card-container2">
-                <span class="event-card-text2">
-                  <span>SOCIAL</span>
-                </span>
-                <span class="event-card-text3"><span>date</span></span>
-                <button class="event-card-button button">
-                  <span class="event-card-text4">
-                    <span>Photos</span>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="past-events-container5">
-        <div
-          class="event-card-blog-post-card event-card-root-class-name33"
-        >
-          <div class="event-card-container">
-            <img
-              alt="image"
-              src="https://play.teleporthq.io/static/svg/default-img.svg"
-              class="event-card-image"
-            />
-            <div class="event-card-container1">
-              <h1 class="event-card-text header">
-                <span>July DCM</span>
-              </h1>
-              <h2 class="event-card-text1 header">
-                <span>Division</span>
-              </h2>
-              <div class="event-card-container2">
-                <span class="event-card-text2">
-                  <span>SOCIAL</span>
-                </span>
-                <span class="event-card-text3">
-                  <span>July 22nd</span>
-                </span>
-                <button class="event-card-button button">
-                  <span class="event-card-text4">
-                    <span>Photos</span>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="event-card-blog-post-card event-card-root-class-name34"
-        >
-          <div class="event-card-container">
-            <img
-              alt="image"
-              src="https://play.teleporthq.io/static/svg/default-img.svg"
-              class="event-card-image"
-            />
-            <div class="event-card-container1">
-              <h1 class="event-card-text header">
-                <span>July DCM</span>
-              </h1>
-              <h2 class="event-card-text1 header">
-                <span>Region</span>
-              </h2>
-              <div class="event-card-container2">
-                <span class="event-card-text2">
-                  <span>SOCIAL</span>
-                </span>
-                <span class="event-card-text3"><span>date</span></span>
-                <button class="event-card-button button">
-                  <span class="event-card-text4">
-                    <span>Photos</span>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        {% endfor %}
     </div>
   </div>
+  <!--
   <div class="past-events-gallery1">
     <div class="opener-container Row opener-root-class-name20">
       <div class="opener-container1">
@@ -366,6 +247,7 @@
       </div>
       <span class="opener-text1 small-text"><span>Text</span></span>
     </div>
+    -->
   </div>
 </div>
 {% endblock %}

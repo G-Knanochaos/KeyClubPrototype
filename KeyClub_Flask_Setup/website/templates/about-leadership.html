@@ -51,10 +51,11 @@
   <div class="about-leadership-gallery">
     {% for member in cabinet %}
     <div
-      class="cabinet-display-person cabinet-display-root-class-name3"
+      class="cabinet-display-person"
     >
       <div class="cabinet-display-blog-post-card">
-        <div class="cabinet-display-container">
+        <div class="cabinet-display-container"
+        style = "background-image: url({{member.Image}});">
           <div class="cabinet-display-container1">
             <span class="cabinet-display-text">
               <span>{{member.Position}}</span>
