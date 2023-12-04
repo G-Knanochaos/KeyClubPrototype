@@ -203,9 +203,7 @@
   }
 }
 @media(max-width: 1200px) {
-  .event-card-text {
-    font-size: 1.5rem;
-  }
+
   .event-card-text1 {
     font-size: 1.25rem;
   }
