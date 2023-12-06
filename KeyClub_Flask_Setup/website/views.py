@@ -29,6 +29,7 @@ def home():
 
 @views.route("about-division")
 def about_division():
+    graphic = fetch("Tracker")
     return render_template("about-division.html")
 
 @views.route("about-keyclub")

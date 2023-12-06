@@ -10,8 +10,8 @@ requests_map = {
     "images":"https://script.google.com/macros/s/AKfycbz8Rjt2zxK97BEDWuy3iSiVOCCEI5fYmQX61RhLfLbLs1n1ebcNUEWwz1yCl00wmMBZ/exec",
     "Sheets":"https://script.google.com/macros/s/AKfycbz_FP0mj05nt9jmiirhTaYN0-K3y-KNqMwu_rHXeB0KjCSPKRriC-kEd7qoAjKEokBu9g/exec",
     "Misc":"https://script.google.com/macros/s/AKfycbzmioExdkHHboQDNtZUjMjAlgcKrYutKkjZrJv3DpT0q-ruQI3tzo-wtChISbxLAnM/exec",
-    "past_photos":"https://script.google.com/macros/s/AKfycbyEkmydKArw2hU-zfQe_uwqj3rgbTKjXJQz_J0f8Tw/dev"
-
+    "past_photos":"https://script.google.com/macros/s/AKfycbyWT74odCr0QBua_P-IQMvAdY3MpTnxXQnZE2BKEByO1ieN3RcVKn9qZJmPT7n_5BDZ/exec",
+    "Trackers":"https://script.google.com/macros/s/AKfycbxRuI74wdcegKrEXNAjKL7sGGzKYJX9yJ6ApmSAeiHxwqkGfUPqnTabPe-7_zr57IQ/exec"
 }
 #n: number of objects to fetch, #s: number multiple
 def fetch(typ,payload={},json_name=None,override=False,interval=1): #if override is set to True, changes won't be fetched until next day and changes will completely overwrite past state
