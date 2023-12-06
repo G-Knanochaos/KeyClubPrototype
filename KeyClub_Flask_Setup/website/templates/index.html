@@ -121,7 +121,7 @@ window.onload = function(){setInterval(function(){countDown("{{events[0].date}}"
       </h1>
     </a>
     <div class="cabinet-div">
-      {% for member in cabinet %}
+      {% for member in cabinet[:4] %}
       <div
         class="cabinet-card-blog-post-card cabinet-card-root-class-name16"
       >
