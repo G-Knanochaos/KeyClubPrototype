@@ -27,9 +27,11 @@ Number.prototype.mod = function (n) {
 };
 
 //web page coutndown and slide movement code
+images = []
 window.onload = function() {
   setInterval(function(){countDown('{{events[0].date}}')},1000);
   setInterval(function(){moveSlide(1)},3000);
+  {{images|tojson}}.forEach((i) => images.push(i.link));
 }
 
 //slide itereation code

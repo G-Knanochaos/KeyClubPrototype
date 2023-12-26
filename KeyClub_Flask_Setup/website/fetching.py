@@ -20,43 +20,42 @@ def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override 
     json_name = json_name if json_name else typ
     interval = int(interval)
     n = int(payload.get("n",-1))
-    m = int(payload.get("m",1000))
-    print(f"Fetching {typ}!")
+    m = int(payload.get("m",9999999999))
+    #print(f"Fetching {typ}!")
     url = url_for("static", filename = f"json/{json_name}.json")
     today = int(datetime.datetime.now().strftime("%Y%m%d"))
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "r") as file:
         try: 
             f = json.load(file)
         except Exception as e:
-            print("File JSON parsing error, emptying file and refetching data")
-            print(e)
+            #print("File JSON parsing error, emptying file and refetching data")
+            #print(e)
             f = {"date":None,typ:[]}
     try:
         if (today - f.get("date",None)) < interval:
-            print(len(f[typ]),n)
+            #print(len(f[typ]),n)
             if len(f[typ]) >= n:
                 return f[typ] if len(f[typ])<m else f[typ][:m]
             add = True
-            print("add is now true")
+            #print("add is now true")
     except Exception as e:
-        print(e)
+        #print(e)
     
     n = n-len(f.get(typ,[]))
 
-    print("Sending request to proxy")
+    #print("Sending request to proxy")
     r = requests.get(requests_map[typ],params = payload)
     r = r.text
 
 
 
     j = json.loads(r)
-    if j[typ] == f[typ]:
-        return f[typ]
     j["date"] = int(today)
-    if add and not override:j[typ] += f[typ]
+    if add and not override:
+        j[typ] += f[typ]
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:
         file.write(json.dumps(j))
 
-    print(f"Fetched {typ} in {time()-start}")
+    #print(f"Fetched {typ} in {time()-start}")
     return j[typ] if len(j[typ])<m else j[typ][:m]
 

@@ -1,1 +1,53 @@
-{"images": [{"link": "https://drive.google.com/uc?export=view&id=1aHS5vF34-NWBmf4r5z0YQpz31hKrpbYD", "album_link": "https://drive.google.com/drive/folders/1NASYF_lg3AtlSqHwR0RWB31iqKKGnbf8", "event": "SEPTEMBER DCM", "date": "September 24 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1dvKn93sezJTiwCG9jOYdGSUc3kTxiykE", "album_link": "https://drive.google.com/drive/folders/1GJgxIcVSa7nr_8qBybzzEq00kOWAKmYm", "event": "AUGUST DCM", "date": "August 26 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1jCuGTiHsax5KoDoMnpFxIZj8FzXtEGUk", "album_link": "https://drive.google.com/drive/folders/1cgkA2JNJ2gZgmBays6JcPR5eWiXeOEks", "event": "JULY DCM", "date": "July 22 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1qk9pN5d4rkWyvsVMEW91NIzXTGQTeijo", "album_link": "https://drive.google.com/drive/folders/1c_lErhr9St3zYC9odYPQEp5zStORsF5n", "event": "JUNE DCM (OTC)", "date": "June 17 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1m72HWuVdJzwcECMc44qbD5dHBbz9hoOg", "album_link": "https://drive.google.com/drive/folders/18WjBe1e-wzlW9PsRO1cBRH74s4tvRlXQ", "event": "MAY DCM", "date": "May 20 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1P2AN8k6AiWLgaVtRQ9HMlkWrrb5yPKyF", "album_link": "https://drive.google.com/drive/folders/1NASYF_lg3AtlSqHwR0RWB31iqKKGnbf8", "event": "SEPTEMBER DCM", "date": "September 24 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1CQFdhIMO2Ud7BuAC5IDluLFaU_Wo4xtm", "album_link": "https://drive.google.com/drive/folders/1GJgxIcVSa7nr_8qBybzzEq00kOWAKmYm", "event": "AUGUST DCM", "date": "August 26 2023"}, {"link": "https://drive.google.com/uc?export=view&id=1ZkLrjPghaizXJpSz5nTm4_sROtFoo0gX", "album_link": "https://drive.google.com/drive/folders/1cgkA2JNJ2gZgmBays6JcPR5eWiXeOEks", "event": "JULY DCM", "date": "July 22 2023"}], "date": 20231226}
+{
+    "images": [
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1m2_gjhk-bVHlvcYNGVsIL3p6ql9czPxn",
+            "album_link": "https://drive.google.com/drive/folders/1NASYF_lg3AtlSqHwR0RWB31iqKKGnbf8",
+            "event": "SEPTEMBER DCM",
+            "date": "September 24 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1CQFdhIMO2Ud7BuAC5IDluLFaU_Wo4xtm",
+            "album_link": "https://drive.google.com/drive/folders/1GJgxIcVSa7nr_8qBybzzEq00kOWAKmYm",
+            "event": "AUGUST DCM",
+            "date": "August 26 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1lDEicWb4nykDa_HH5WGVGK1AdW4lL0ZW",
+            "album_link": "https://drive.google.com/drive/folders/1cgkA2JNJ2gZgmBays6JcPR5eWiXeOEks",
+            "event": "JULY DCM",
+            "date": "July 22 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1wt9htUF0ma5M_KXV0g3zWS8o-0XTLp7v",
+            "album_link": "https://drive.google.com/drive/folders/1c_lErhr9St3zYC9odYPQEp5zStORsF5n",
+            "event": "JUNE DCM (OTC)",
+            "date": "June 17 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1T_ZreDmrCqz95xk7FMV2Dnjt0PRESdCd",
+            "album_link": "https://drive.google.com/drive/folders/18WjBe1e-wzlW9PsRO1cBRH74s4tvRlXQ",
+            "event": "MAY DCM",
+            "date": "May 20 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1l1KAI98pcM50dkTCN0jBHpWv-axCOseE",
+            "album_link": "https://drive.google.com/drive/folders/1NASYF_lg3AtlSqHwR0RWB31iqKKGnbf8",
+            "event": "SEPTEMBER DCM",
+            "date": "September 24 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=1S1RNPpy_T0MIJqq0RSdLSBS94_-mXVNO",
+            "album_link": "https://drive.google.com/drive/folders/1GJgxIcVSa7nr_8qBybzzEq00kOWAKmYm",
+            "event": "AUGUST DCM",
+            "date": "August 26 2023"
+        },
+        {
+            "link": "https://drive.google.com/uc?export=view&id=13UgOsraNh9zocI61DIdVULLiWvJJI-bn",
+            "album_link": "https://drive.google.com/drive/folders/1cgkA2JNJ2gZgmBays6JcPR5eWiXeOEks",
+            "event": "JULY DCM",
+            "date": "July 22 2023"
+        }
+    ],
+    "date": 20231226
+}

@@ -45,8 +45,8 @@ def about_leadership():
 
 @views.route("events")
 def events():
-    events =  fetch("events",n=4)
-    images = fetch("images",n=8,interval=30)
+    events = fetch("events",m=4)#get up to 4 events
+    images = fetch("images",n=5,interval=30)
     return render_template("events.html", events=events, images=images)
 
 @views.route("past-events")
@@ -65,7 +65,7 @@ def faq():
 @views.route("resources-misc.html")
 def misc():
     misc = fetch("Misc",override=True)
-    print(misc)
+    #print(misc)
     return render_template("resources-misc.html",misc=misc)
 
 @views.route("resources-newsletters.html")
@@ -77,9 +77,9 @@ def fetchResources():
     args = request.args
     return fetch(**args)
 
-'''
+
 @views.errorhandler(Exception)
 def internal_server_error(e):
     return render_template("error.html")
-    '''
+    
 
