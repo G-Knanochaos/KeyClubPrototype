@@ -20,6 +20,7 @@ def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override 
     json_name = json_name if json_name else typ
     interval = int(interval)
     n = int(payload.get("n",-1))
+    m = int(payload.get("m",1000))
     print(f"Fetching {typ}!")
     url = url_for("static", filename = f"json/{json_name}.json")
     today = int(datetime.datetime.now().strftime("%Y%m%d"))
@@ -33,8 +34,8 @@ def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override 
     try:
         if (today - f.get("date",None)) < interval:
             print(len(f[typ]),n)
-            if len(f[typ]) >= n and n != -1:
-                return f[typ]
+            if len(f[typ]) >= n:
+                return f[typ] if len(f[typ])<m else f[typ][:m]
             add = True
             print("add is now true")
     except Exception as e:
@@ -44,11 +45,9 @@ def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override 
 
     print("Sending request to proxy")
     r = requests.get(requests_map[typ],params = payload)
-    print(r.url)
     r = r.text
 
 
-    print(r)
 
     j = json.loads(r)
     if j[typ] == f[typ]:
@@ -59,5 +58,5 @@ def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override 
         file.write(json.dumps(j))
 
     print(f"Fetched {typ} in {time()-start}")
-    return j[typ]
+    return j[typ] if len(j[typ])<m else j[typ][:m]
 

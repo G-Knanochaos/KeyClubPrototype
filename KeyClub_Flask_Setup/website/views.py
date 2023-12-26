@@ -12,12 +12,11 @@ def base():
 
 @views.route('')
 def default():
-    events = fetch("events",n=4)
+    events = fetch("events",m=4)#get up to 4 events
     images = fetch("images",n=8,interval=30)
     cabinet = fetch("Sheets",json_name="cabinet_info",override=True,
         name="Cabinet Display",
         n=4)
-
     return render_template("index.html", images=images, events=events, cabinet=cabinet)
 
 
@@ -77,3 +76,10 @@ def newsletters():
 def fetchResources():
     args = request.args
     return fetch(**args)
+
+'''
+@views.errorhandler(Exception)
+def internal_server_error(e):
+    return render_template("error.html")
+    '''
+
