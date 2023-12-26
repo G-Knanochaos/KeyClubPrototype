@@ -444,9 +444,42 @@
   padding-bottom: 2px;
   background-size: cover;
   justify-content: center;
-  background-image: linear-gradient(0deg, rgba(13, 12, 12, 0.2) 16.00%,rgba(252, 249, 226, 0.2) 93.00%),url('https://k05010.site.kiwanis.org/wp-content/uploads/sites/103/2019/11/IMG_1324a-1024x480.jpg');
   background-repeat: repeat,space;
   background-position: top left,center;
+}
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+/* Position the "next button" to the right */
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
 }
 .home-home-content {
   flex: 0 0 auto;

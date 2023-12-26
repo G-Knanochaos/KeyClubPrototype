@@ -29,8 +29,9 @@ def home():
 
 @views.route("about-division")
 def about_division():
-    graphic = fetch("Tracker")
-    return render_template("about-division.html")
+    service = fetch("tracker",payload={"name":"Service Tracker","n":1},json_name = "service_tracker",interval=30) 
+    funds = fetch("tracker",payload={"name":"Funds Tracker","n":1},json_name="funds_tracker",interval=30) 
+    return render_template("about-division.html",service=service,funds=funds) 
 
 @views.route("about-keyclub")
 def about_keyclub():

@@ -11,7 +11,7 @@ requests_map = {
     "Sheets":"https://script.google.com/macros/s/AKfycbz_FP0mj05nt9jmiirhTaYN0-K3y-KNqMwu_rHXeB0KjCSPKRriC-kEd7qoAjKEokBu9g/exec",
     "Misc":"https://script.google.com/macros/s/AKfycbzmioExdkHHboQDNtZUjMjAlgcKrYutKkjZrJv3DpT0q-ruQI3tzo-wtChISbxLAnM/exec",
     "past_photos":"https://script.google.com/macros/s/AKfycbyWT74odCr0QBua_P-IQMvAdY3MpTnxXQnZE2BKEByO1ieN3RcVKn9qZJmPT7n_5BDZ/exec",
-    "Trackers":"https://script.google.com/macros/s/AKfycbxRuI74wdcegKrEXNAjKL7sGGzKYJX9yJ6ApmSAeiHxwqkGfUPqnTabPe-7_zr57IQ/exec"
+    "tracker":"https://script.google.com/macros/s/AKfycbxpPJI9XIBZNQVsHyVkwwL8b3kzQmFH-KDWwhUIPggSYrFvoqVEcuoTGzfeDy3wR2Rd/exec"
 }
 #n: number of objects to fetch, #s: number multiple
 def fetch(typ,payload={},json_name=None,override=False,interval=1): #if override is set to True, changes won't be fetched until next day and changes will completely overwrite past state
@@ -32,7 +32,7 @@ def fetch(typ,payload={},json_name=None,override=False,interval=1): #if override
     try:
         if (today - f.get("date",None)) < interval:
             print(len(f[typ]),n)
-            if len(f[typ]) >= n:
+            if len(f[typ]) >= n and n != -1:
                 return f[typ]
             add = True
             print("add is now true")
@@ -42,10 +42,16 @@ def fetch(typ,payload={},json_name=None,override=False,interval=1): #if override
     n = n-len(f.get(typ,[]))
 
     print("Sending request to proxy")
-    r = requests.get(requests_map[typ],params = payload).text
+    r = requests.get(requests_map[typ],params = payload)
+    print(r.url)
+    r = r.text
+
 
     print(r)
+
     j = json.loads(r)
+    if j[typ] == f[typ]:
+        return f[typ]
     j["date"] = int(today)
     if add and not override:j[typ] += f[typ]
     with open(os.path.join(os.path.dirname(__file__),url[1:]), "w") as file:
