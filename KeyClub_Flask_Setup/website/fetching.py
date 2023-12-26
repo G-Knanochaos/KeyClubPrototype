@@ -39,7 +39,7 @@ def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override 
             add = True
             #print("add is now true")
     except Exception as e:
-        #print(e)
+        print(e)
     
     n = n-len(f.get(typ,[]))
 
