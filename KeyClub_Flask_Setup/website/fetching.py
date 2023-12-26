@@ -14,11 +14,12 @@ requests_map = {
     "tracker":"https://script.google.com/macros/s/AKfycbxpPJI9XIBZNQVsHyVkwwL8b3kzQmFH-KDWwhUIPggSYrFvoqVEcuoTGzfeDy3wR2Rd/exec"
 }
 #n: number of objects to fetch, #s: number multiple
-def fetch(typ,payload={},json_name=None,override=False,interval=1): #if override is set to True, changes won't be fetched until next day and changes will completely overwrite past state
+def fetch(typ,json_name=None,override=False,interval=1,**payload): #if override is set to True, changes won't be fetched until next day and changes will completely overwrite past state
     start = time()
     add = override
     json_name = json_name if json_name else typ
-    n = payload.get("n",-1)
+    interval = int(interval)
+    n = int(payload.get("n",-1))
     print(f"Fetching {typ}!")
     url = url_for("static", filename = f"json/{json_name}.json")
     today = int(datetime.datetime.now().strftime("%Y%m%d"))

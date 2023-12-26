@@ -8,19 +8,32 @@
 {% block scripts %}
 <script src = "{{url_for('static', filename='javascript/countdown.js')}}" type="text/javascript">  
 </script>
+<script src = "{{url_for('static', filename='javascript/fetchAsync.js')}}" type="text/javascript"></script>
 <script type = "text/javascript">
-var i = 0
-var images = []
+//async request images and events from server and load page in meantime
+/*
+images = fetchImageUrls(params={
+  typ:"images",n:8,interval:30
+})
+events = fetchImageUrls(params={
+  typ:"events",n:8
+})
+*/
+
+//fixing the js modulo operator for the slideshow
 Number.prototype.mod = function (n) {
   "use strict";
   return ((this % n) + n) % n;
 };
+
+//web page coutndown and slide movement code
 window.onload = function() {
   setInterval(function(){countDown('{{events[0].date}}')},1000);
-  setInterval(function(){moveSlide(1)},5000);
-  {{images|tojson}}.forEach((i) => images.push(i.link));
-
+  setInterval(function(){moveSlide(1)},3000);
 }
+
+//slide itereation code
+var i = 0
 function moveSlide(direction) {
   var hero = document.getElementById("home-hero")
   i += direction;
@@ -245,6 +258,7 @@ function moveSlide(direction) {
                 src={{images[4].link}}
                 alt="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxmb29kfGVufDB8fHx8MTYyNjQ0OTIzNQ&amp;ixlib=rb-1.2.1&amp;h=1000"
                 class=" gallery-card2-image"
+                loading="lazy"
               />
             </div>
           </div>
@@ -264,6 +278,8 @@ function moveSlide(direction) {
                 src={{images[5].link}}
                 alt="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fGZvb2R8ZW58MHx8fHwxNjI2NDQ5NjUy&amp;ixlib=rb-1.2.1&amp;h=1000"
                 class="gallery-card2-image "
+                loading="lazy"
+
               />
             </div>
           </div>
@@ -284,6 +300,8 @@ function moveSlide(direction) {
               src={{images[6].link}}
               alt="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDIzfHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
               class="gallery-card2-image "
+              loading="lazy"
+
             />
           </div>
         </div>
@@ -304,6 +322,8 @@ function moveSlide(direction) {
             src={{images[7].link}}
             alt="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE5fHxmb29kfGVufDB8fHx8MTYyNjQ0OTY1Mg&amp;ixlib=rb-1.2.1&amp;h=1000"
             class="gallery-card2-image "
+            loading="lazy"
+
           />
         </div>
       </div>
