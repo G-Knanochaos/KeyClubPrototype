@@ -45,7 +45,7 @@ def about_leadership():
 
 @views.route("events")
 def events():
-    events = fetch("events",payload={"n":4})
+    events =  fetch("events",payload={"n":4})
     images = fetch("images",payload={"n":8},interval=30)
     return render_template("events.html", events=events, images=images)
 
