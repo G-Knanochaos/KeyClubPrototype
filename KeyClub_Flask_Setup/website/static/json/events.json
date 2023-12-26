@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
     "events": [
         {
@@ -18,4 +19,26 @@
         }
     ],
     "date": 2023122
+=======
+{
+    "events": [
+        {
+            "date": "14 January 2024",
+            "event": "Region 3 Conclave",
+            "location": "Santa Ana High School520 W Walnut St, Santa Ana, CA 92701(TBC)",
+            "event_type": "Region",
+            "rsvp": "No RSVP form",
+            "agenda": "No Agenda"
+        },
+        {
+            "date": "2024",
+            "event": "February DCM: Baby Shower",
+            "location": "",
+            "event_type": "Division",
+            "rsvp": "No RSVP form",
+            "agenda": "No Agenda"
+        }
+    ],
+    "date": 20231226
+>>>>>>> Stashed changes
 }
